@@ -1,6 +1,6 @@
 import random
 
-def simular_monty_hall(cambiar_puerta):
+def simular_monty_hall(cambiar_puerta, imprimir = True):
     # Elección aleatoria de la puerta donde está el auto (1, 2 o 3)
     puerta_auto = random.randint(1, 3)
     
@@ -23,14 +23,15 @@ def simular_monty_hall(cambiar_puerta):
     
     # Resultado final
     gano_auto = puerta_participante == puerta_auto
-    
-    # Imprimir resultados
-    print("Puerta elegida por el participante:", puerta_participante)
-    print("Puerta donde está el auto:", puerta_auto)
-    print("Puerta abierta por el presentador:", puerta_abierta)
-    if cambiar_puerta:
-        print("El participante cambió a la puerta:", puerta_participante)
-    print("Resultado del concurso: El participante", "gana el auto." if gano_auto else "no gana el auto.")
+
+    if imprimir:
+        # Imprimir resultados
+        print("Puerta elegida por el participante:", puerta_participante)
+        print("Puerta donde está el auto:", puerta_auto)
+        print("Puerta abierta por el presentador:", puerta_abierta)
+        if cambiar_puerta:
+            print("El participante cambió a la puerta:", puerta_participante)
+        print("Resultado del concurso: El participante", "gana el auto." if gano_auto else "no gana el auto.")
     
     return gano_auto
 
@@ -38,7 +39,7 @@ def simular_monty_hall_y_contar_victorias(num_simulaciones, cambiar_puerta):
     victorias = 0
     for _ in range(num_simulaciones):
         # Simular el juego de Monty Hall
-        resultado = simular_monty_hall(cambiar_puerta)
+        resultado = simular_monty_hall(cambiar_puerta, False)
         if resultado:
             victorias += 1
     return victorias
