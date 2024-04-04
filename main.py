@@ -31,6 +31,37 @@ def simular_monty_hall(cambiar_puerta):
     if cambiar_puerta:
         print("El participante cambió a la puerta:", puerta_participante)
     print("Resultado del concurso: El participante", "gana el auto." if gano_auto else "no gana el auto.")
+    
+    return gano_auto
 
-# Ejemplo de uso:
-simular_monty_hall(cambiar_puerta=True)
+def simular_monty_hall_y_contar_victorias(num_simulaciones, cambiar_puerta):
+    victorias = 0
+    for _ in range(num_simulaciones):
+        # Simular el juego de Monty Hall
+        resultado = simular_monty_hall(cambiar_puerta)
+        if resultado:
+            victorias += 1
+    return victorias
+
+def simular_juego_monty_hall():
+    # Solicitar número de simulaciones al usuario
+    num_simulaciones = int(input("Ingrese el número de simulaciones: "))
+    
+    # Solicitar estrategia al usuario
+    cambio_puerta = input("¿Desea cambiar de puerta? (s/n): ").lower()
+    if cambio_puerta == "s":
+        cambiar_puerta = True
+    else:
+        cambiar_puerta = False
+
+    # Simulaciones y contar victorias
+    victorias = simular_monty_hall_y_contar_victorias(num_simulaciones, cambiar_puerta)
+
+    # Imprimir resultados
+    if cambiar_puerta:
+        print(f"Para {num_simulaciones} simulaciones con cambio de puerta, el participante ganó el auto {victorias} veces.")
+    else:
+        print(f"Para {num_simulaciones} simulaciones sin cambio de puerta, el participante ganó el auto {victorias} veces.")
+
+# Ejecutar la simulación del juego de Monty Hall
+simular_juego_monty_hall()
