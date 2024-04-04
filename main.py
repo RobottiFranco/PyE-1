@@ -39,7 +39,7 @@ def simular_monty_hall_y_contar_victorias(num_simulaciones, cambiar_puerta):
     victorias = 0
     for _ in range(num_simulaciones):
         # Simular el juego de Monty Hall
-        resultado = simular_monty_hall(cambiar_puerta, False)
+        resultado = simular_monty_hall(cambiar_puerta, num_simulaciones == 1)
         if resultado:
             victorias += 1
     return victorias
