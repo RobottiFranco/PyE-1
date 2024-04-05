@@ -19,10 +19,10 @@ def simular_monty_hall(cambiar_puerta, imprimir = True):
     
     # Si el participante decide cambiar de puerta
     if cambiar_puerta:
-        puerta_participante = [puerta for puerta in range(1, 4) if puerta != puerta_participante and puerta != puerta_abierta][0]
+        nueva_puerta = [puerta for puerta in range(1, 4) if puerta != puerta_participante and puerta != puerta_abierta][0]
     
     # Resultado final
-    gano_auto = puerta_participante == puerta_auto
+    gano_auto = nueva_puerta == puerta_auto
 
     if imprimir:
         # Imprimir resultados
@@ -30,7 +30,7 @@ def simular_monty_hall(cambiar_puerta, imprimir = True):
         print("Puerta donde está el auto:", puerta_auto)
         print("Puerta abierta por el presentador:", puerta_abierta)
         if cambiar_puerta:
-            print("El participante cambió a la puerta:", puerta_participante)
+            print("El participante cambió a la puerta por la puerta numero ", nueva_puerta)
         print("Resultado del concurso: El participante", "gana el auto." if gano_auto else "no gana el auto.")
     
     return gano_auto
