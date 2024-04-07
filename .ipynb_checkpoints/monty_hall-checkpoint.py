@@ -20,6 +20,8 @@ def simular_monty_hall(cambiar_puerta, imprimir = True):
     # Si el participante decide cambiar de puerta
     if cambiar_puerta:
         nueva_puerta = [puerta for puerta in range(1, 4) if puerta != puerta_participante and puerta != puerta_abierta][0]
+    else:
+        nueva_puerta = puerta_participante
     
     # Resultado final
     gano_auto = nueva_puerta == puerta_auto
@@ -64,5 +66,6 @@ def simular_juego_monty_hall():
     else:
         print(f"Para {num_simulaciones} simulaciones sin cambio de puerta, el participante ganó el auto {victorias} veces.")
 
-# Ejecutar la simulación del juego de Monty Hall
-simular_juego_monty_hall()
+# Ejecutar la simulación del juego de Monty Hall, unicamente si el archivo es ejecutado, y no importado
+if __name__ == '__main__':
+    simular_juego_monty_hall()
